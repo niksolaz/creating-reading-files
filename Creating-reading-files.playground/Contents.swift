@@ -23,6 +23,7 @@ if !fm.fileExists(atPath: (directoryName?.path)!){
 
 //Metodo 1 per creare file scrivendo da string
 let content = "Hello World"
+
 let fileName = directoryName?.appendingPathComponent("helloworld").appendingPathExtension("txt")
 
 fileName?.path
@@ -32,7 +33,10 @@ try? content.write(to: fileName!, atomically: true, encoding: .utf8)
 //Metodo 2 per creare file usando Data
 let fileName2 = directoryName?.appendingPathComponent("helloworld2").appendingPathExtension("txt")
 fileName?.path
+
 let contentFile2 = try? Data(contentsOf: fileName!)
+//Transform data in string
+let content2String = String(bytes: contentFile2!, encoding: .utf8)
 
 try? fm.createFile(atPath: (fileName2?.path)!, contents: contentFile2, attributes: nil)
 
