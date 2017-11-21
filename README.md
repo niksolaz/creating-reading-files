@@ -1,1 +1,1 @@
-Simple app creting reading files 
+Playground for create and read file 
