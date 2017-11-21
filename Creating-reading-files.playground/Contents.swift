@@ -3,7 +3,7 @@
 //E' un tipo di value
 //FileManager.default -> Creare directory, leggere directory ...
 
-import Foundation
+import UIKit
 let fm = FileManager.default
 let docDirectories = fm.urls(for: .documentDirectory, in: .userDomainMask)
 
@@ -39,6 +39,22 @@ let contentFile2 = try? Data(contentsOf: fileName!)
 let content2String = String(bytes: contentFile2!, encoding: .utf8)
 
 try? fm.createFile(atPath: (fileName2?.path)!, contents: contentFile2, attributes: nil)
+
+//Metodo per prendere un imagine tramite url
+let imgUrl = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png")
+
+let dataImg = try? Data(contentsOf: imgUrl!)
+
+let pokeImg = UIImage(data: dataImg!)
+
+let dataImg2 = try? UIImagePNGRepresentation(pokeImg!)
+
+let imgFileName = directoryName?.appendingPathComponent("shiny").appendingPathExtension("png")
+
+try? dataImg?.write(to: imgFileName!)
+
+
+
 
 
 
